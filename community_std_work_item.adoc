@@ -1,4 +1,4 @@
-:CSname: (Community Standard name)
+:CSname: PROJJSON
 :Title: {CSname} Community Standard Work Item Justification
 :titletext: {Title}
 :doctype: book
@@ -51,11 +51,28 @@ Once approved, the Community standard Work Item defined by this document is vali
 Summarize the proposed Community standard. In this summary, provide an overview of the geospatial interoperability requirements the proposed standard supports, the history of its development and use, and use cases.
 ////
 
+https://proj.org/specifications/projjson.html[PROJJSON] is a https://www.json.org/json-en.html[JSON encoding] of http://docs.opengeospatial.org/is/18-010r7/18-010r7.html[WKT2:2019 / ISO-19162:2019: Geographic information - Well-known text representation of coordinate reference system], which itself implements the model of http://docs.opengeospatial.org/as/18-005r4/18-005r4.html[OGC Topic 2: Referencing by coordinates abstract specification / ISO-19111:2019]. Apart from the difference of encodings, the semantics is intended to be exactly the same as WKT2:2019, and PROJJSON can be morphed losslessly from/into WKT2:2019.
+
+PROJJSON is aimed at encoding definitions of coordinate reference systems (CRS), and their composing objects: datums, datum ensembles, coordinate systems, conversion, and coordinate operations.
+
+PROJJSON was first implemented in version 6.2 of the https://proj.org[PROJ] open-source library (released in September 2019).
+
+The rationale for the development of PROJJSON is that the use of WKT strings in JSON documents or JSON-based APIs is awkward, as the parsing of WKT strings require non-trivial logic which strong domain knowledge of CRS modeling. Having a dedicated JSON encoding for CRS makes it easier for consumers to inspect properties of a CRS, like its nature, name, units, identifiers, etc. much easier by simple natification in the JSON object hierarchy.
+
+PROJJSON comes with a JSON schema [https://proj.org/schemas/v0.4/projjson.schema.json] which helps writers of PROJJSON to validate the well-formedness of their output, and consumers to have the grammar of PROJJSON content in a well-accepted format.
+
+It has been used as one of the potential encodings for CRS in the https://gdal.org/drivers/raster/zarr.html#srs-encoding[GDAL Zarr driver], developed as part of http://docs.opengeospatial.org/per/21-032.html#toc23[OGC Testbed 17]
+
 == Relationship to other OGC Standards
 
 ////
 State whether this proposed Community standard has any dependencies on OGC standards or is itself normatively referenced by an OGC standard and list those standards, as applicable.
 ////
+
+PROJJSON is a JSON encoding of http://docs.opengeospatial.org/as/18-005r4/18-005r4.html[OGC Topic 2: Referencing by coordinates abstract specification / ISO-19111:2019], and can be morphed from/into http://docs.opengeospatial.org/is/18-010r7/18-010r7.html[WKT2:2019].
+
+It is used as the CRS encoding for the https://github.com/opengeospatial/geoparquet/blob/main/format-specs/geoparquet.md#crs[GeoParquet specification]. The Apache Parquet provides a standardized open-source columnar storage format. The GeoParquet specification defines how geospatial data should be stored in parquet format, including the representation of geometries and the required additional metadata.
+
 
 == Alignment with OGC Standards Baseline
 
@@ -63,17 +80,32 @@ State whether this proposed Community standard has any dependencies on OGC stand
 Describe where this proposed standard fits with respect to the existing OGC standards baseline and standards in development in the OGC and whether this proposed standard may compete with or enhance an existing OGC standard.
 ////
 
+Covered by previous paragraph.
+
 == Evidence of implementation
 
 The following implementations use the proposed Community standard.
 
-*Implementation name:*
+////
+Repeat for each implementation. Place a "x" in the appropriate box regarding complete implementation.
+Optionally, provide a narrative description of the extent of implementation of the proposed Community standard for those proposed standards that are very widely used.
+////
 
-*Date of most recent version:*
+=== PROJ library
+
+*Implementation name:* PROJ library
+
+*Date of most recent version:* PROJ 9.0.0, March 1st 2022
 
 *Implementation description:*
 
-*Implementation URL:*
+PROJ is a generic coordinate transformation C++ library that transforms geospatial coordinates from one coordinate reference system (CRS) to another. This includes cartographic projections as well as geodetic transformations. PROJ is released under the MIT open source license. PROJ is used in many open-source software (GDAL, QGIS, GRASS-GIS, pyproj, PROJ-JNI, etc.), as well as in commercial software.
+
+It offers import and export capabilities of PROJJSON from/to WKT2:2019 (or earlier versions).
+
+It is the initial, and probably what can be considered the reference implementation of PROJJSON.
+
+*Implementation URL:* https://proj.org
 
 *Is implementation complete?*
 
@@ -82,10 +114,27 @@ The following implementations use the proposed Community standard.
 
 *If not,* what portions of the proposed Community standard are implemented?
 
-////
-Repeat for each implementation. Place a "x" in the appropriate box regarding complete implementation.
-Optionally, provide a narrative description of the extent of implementation of the proposed Community standard for those proposed standards that are very widely used.
-////
+=== pyproj library
+
+*Implementation name:* pyproj library
+
+*Date of most recent version:* pyproj 3.3.1, April 22nd 2022
+
+*Implementation description:*
+
+Python interface to PROJ (cartographic projections and coordinate transformations library).
+
+Supports PROJJSON since its version 2.5.0 (February 2020)
+
+*Implementation URL:* https://pyproj4.github.io/pyproj
+
+*Is implementation complete?*
+
+* [x] Yes
+* [ ] No
+
+*If not,* what portions of the proposed Community standard are implemented?
+
 
 == Public availability
 
@@ -94,7 +143,9 @@ Is the proposed Community standard currently publicly available?
 * [x] Yes
 * [ ] No
 
-URL:
+URL: https://proj.org/specifications/projjson.html
+
+The PROJJSON specification and JSON schema are available under the MIT license.
 
 == Supporting OGC Members
 
@@ -102,11 +153,15 @@ URL:
 List the supporting organizations. There must be at least three OGC organizations of which at least one must be an OGC Voting Member.
 ////
 
+- Spatialys
+- Hobu, Inc.
+- Planet Labs PBC
+- CARTO
 == Intellectual Property Rights
 
 Will the contributor retain intellectual property rights?
 
-* [ ] Yes
+* [x] Yes
 * [ ] No
 
 If yes, the contributor will be required to work with OGC staff to properly attribute the submitter’s intellectual property rights.
