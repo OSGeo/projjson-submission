@@ -156,7 +156,7 @@ List the supporting organizations. There must be at least three OGC organization
 - Spatialys
 - Hobu, Inc.
 - Planet Labs PBC
-
+- CARTO
 == Intellectual Property Rights
 
 Will the contributor retain intellectual property rights?
