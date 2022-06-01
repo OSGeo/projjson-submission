@@ -86,6 +86,13 @@ Covered by previous paragraph.
 
 The following implementations use the proposed Community standard.
 
+////
+Repeat for each implementation. Place a "x" in the appropriate box regarding complete implementation.
+Optionally, provide a narrative description of the extent of implementation of the proposed Community standard for those proposed standards that are very widely used.
+////
+
+=== PROJ library
+
 *Implementation name:* PROJ library
 
 *Date of most recent version:* PROJ 9.0.0, March 1st 2022
@@ -107,10 +114,27 @@ It is the initial, and probably what can be considered the reference implementat
 
 *If not,* what portions of the proposed Community standard are implemented?
 
-////
-Repeat for each implementation. Place a "x" in the appropriate box regarding complete implementation.
-Optionally, provide a narrative description of the extent of implementation of the proposed Community standard for those proposed standards that are very widely used.
-////
+=== pyproj library
+
+*Implementation name:* pyproj library
+
+*Date of most recent version:* pyproj 3.3.1, April 22nd 2022
+
+*Implementation description:*
+
+Python interface to PROJ (cartographic projections and coordinate transformations library).
+
+Supports PROJJSON since its version 2.5.0 (February 2020)
+
+*Implementation URL:* https://pyproj4.github.io/pyproj
+
+*Is implementation complete?*
+
+* [x] Yes
+* [ ] No
+
+*If not,* what portions of the proposed Community standard are implemented?
+
 
 == Public availability
 
@@ -130,6 +154,7 @@ List the supporting organizations. There must be at least three OGC organization
 ////
 
 - Spatialys
+- Hobu, Inc.
 
 == Intellectual Property Rights
 
