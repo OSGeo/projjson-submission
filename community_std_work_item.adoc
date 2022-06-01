@@ -155,6 +155,7 @@ List the supporting organizations. There must be at least three OGC organization
 
 - Spatialys
 - Hobu, Inc.
+- Planet Labs PBC
 
 == Intellectual Property Rights
 
