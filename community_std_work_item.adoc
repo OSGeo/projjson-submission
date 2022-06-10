@@ -73,6 +73,9 @@ PROJJSON is a JSON encoding of http://docs.opengeospatial.org/as/18-005r4/18-005
 
 It is used as the CRS encoding for the https://github.com/opengeospatial/geoparquet/blob/main/format-specs/geoparquet.md#crs[GeoParquet specification]. The Apache Parquet provides a standardized open-source columnar storage format. The GeoParquet specification defines how geospatial data should be stored in parquet format, including the representation of geometries and the required additional metadata.
 
+PROJJSON is used in the https://docs.opengeospatial.org/DRAFTS/17-083r4.html#tms-json-encoding[OGC Two Dimensional Tile Matrix Set and Tile Set Metadata] for its JSON encoding.
+
+It is also considered for use in the CoverageJSON standard (https://github.com/opengeospatial/CoverageJSON/issues/26)
 
 == Alignment with OGC Standards Baseline
 
