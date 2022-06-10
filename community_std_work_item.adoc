@@ -75,7 +75,9 @@ It is used as the CRS encoding for the https://github.com/opengeospatial/geoparq
 
 PROJJSON is used in the https://docs.opengeospatial.org/DRAFTS/17-083r4.html#tms-json-encoding[OGC Two Dimensional Tile Matrix Set and Tile Set Metadata] for its JSON encoding.
 
-It is also considered for use in the CoverageJSON standard (https://github.com/opengeospatial/CoverageJSON/issues/26)
+It is used in the https://github.com/stac-extensions/projection#item-properties-or-asset-fields[STAC Projection Extension Specification]
+
+It is also considered for use in the CoverageJSON standard (https://github.com/opengeospatial/CoverageJSON/issues/26) or potential future work item for OGC API features (https://github.com/opengeospatial/ogcapi-features/issues/451#issuecomment-719403423)
 
 == Alignment with OGC Standards Baseline
 
